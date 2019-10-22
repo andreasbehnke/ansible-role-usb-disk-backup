@@ -1,0 +1,12 @@
+[Unit]
+Description=Start backup on device mount
+Requires={{ backup_device.mount }}
+After={{ backup_device.mount }}
+
+[Service]
+User={{ backup_user }}
+Group={{ backup_group }}
+ExecStart=/opt/backup/backup.sh
+
+[Install]
+WantedBy={{ backup_device.mount }}

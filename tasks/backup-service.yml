@@ -1,0 +1,15 @@
+---
+
+  - name: create service descriptor for automatically starting backup
+    become: yes
+    template: 
+      src: 'backup.service.j2' 
+      dest: '/etc/systemd/system/backup.service' 
+      mode: '0644'
+    when: backup_device.mount is defined
+  - name: enable backup service descriptor
+    become: yes
+    systemd: 
+      name: 'backup.service' 
+      enabled: 'yes'
+    when: backup_device.mount is defined

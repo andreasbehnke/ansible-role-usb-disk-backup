@@ -1,0 +1,5 @@
+---
+
+  - include: 'rsync.yml'
+  - include: 'backup-script.yml'
+  - include: 'backup-service.yml'
