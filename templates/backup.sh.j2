@@ -1,6 +1,6 @@
 #!/bin/bash
 {% for host in groups[backup_slave_group_name] %}
 {% for source in hostvars[host][backup_slave_sources_name] %}
-rsync {{ source.rsync_opts }} {{ source.user }}@{{ hostvars[host]['ansible_host'] }}:{{ source.path }} {{ backup_device.path }}/{{ host }} >> /var/log/backup/{{ host }}.log
+rsync {{ backup_master_rsync_opts | default(source.rsync_opts) }} {{ source.user }}@{{ hostvars[host]['ansible_host'] }}:{{ source.path }} {{ backup_device.path }}/{{ host }} >> /var/log/backup/{{ host }}.log
 {% endfor %}
 {% endfor %}
