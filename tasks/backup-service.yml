@@ -12,7 +12,7 @@
   - name: enable backup service descriptor
     become: yes
     systemd: 
-      name: 'backup.service' 
+      name: 'backup-mount.service' 
       enabled: 'yes'
     when: backup_device.mount is defined
 
@@ -31,4 +31,10 @@
       src: 'backup-schedule.timer.j2' 
       dest: '/etc/systemd/system/backup-schedule.timer' 
       mode: '0644'
+    when: backup_schedule is defined
+  - name: enable schedule timer descriptor
+    become: yes
+    systemd: 
+      name: 'backup-schedule.timer' 
+      enabled: 'yes'
     when: backup_schedule is defined
