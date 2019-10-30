@@ -23,4 +23,4 @@
     openssh_keypair: 
       path: '/home/{{ backup_user }}/.ssh/id_rsa' 
       owner: '{{ backup_user }}' 
-      group: '{{ backup_group }}'    
+      group: '{{ backup_user }}' # always use the primary user group here!
