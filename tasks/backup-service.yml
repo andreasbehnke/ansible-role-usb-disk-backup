@@ -37,4 +37,5 @@
     systemd: 
       name: 'backup-schedule.timer' 
       enabled: 'yes'
+      state: 'started'
     when: backup_schedule is defined
