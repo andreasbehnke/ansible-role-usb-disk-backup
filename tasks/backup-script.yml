@@ -18,9 +18,3 @@
       state: 'directory' 
       owner: '{{ backup_user }}' 
       group: '{{ backup_group }}'
-  - name: openssh key exists for remote access for rsync
-    become: yes
-    openssh_keypair: 
-      path: '/home/{{ backup_user }}/.ssh/id_rsa' 
-      owner: '{{ backup_user }}' 
-      group: '{{ backup_user }}' # always use the primary user group here!
