@@ -1,5 +1,9 @@
 ---
-
+  - name: install script requirements
+    become: yes
+    apt:
+      name: libnotify-bin
+      state: 'latest'
   - name: ensure backup script directory
     become: yes
     file: 
