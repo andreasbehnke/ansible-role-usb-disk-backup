@@ -4,6 +4,7 @@
     apt:
       name: libnotify-bin
       state: 'latest'
+    when: not backup_headless
   - name: ensure backup script directory
     become: yes
     file: 

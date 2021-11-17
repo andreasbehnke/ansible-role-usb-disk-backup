@@ -1,3 +1,4 @@
 ---
   backup_slave_group_name: 'backup_slave'
   backup_slave_sources_name: 'backup_sources'
+  backup_headless: true

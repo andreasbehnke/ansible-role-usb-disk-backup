@@ -1,6 +1,8 @@
 #!/bin/bash
 errors=
+{% if not backup_headless %}
 notify-send "Starting backup"
+{% endif %}
 {% for host in groups[backup_slave_group_name] %}
 {% for source in hostvars[host][backup_slave_sources_name] %}
 echo '===============================================' >> /var/log/backup/{{ host }}.log
@@ -12,9 +14,11 @@ then
 fi
 {% endfor %}
 {% endfor %}
+{% if not backup_headless %}
 if [ -z "$error" ]
 then
     notify-send -c "transfer.complete" "Backup finished, please remove backup device" --icon=dialog-information
 else
     notify-send -c "transfer.complete" "Backup finished with errors for these hosts: ${error}" --icon=dialog-warning
 fi
+{% endif %}
