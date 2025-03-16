@@ -8,6 +8,8 @@ For each host a backup log file is created in ```/var/lib/backup/[hostname].log`
 This rule supports two groups of hosts. All hosts that have files that need to be backed up go into the backup_sources group. To all hosts (workstation or desktop computers) which will serve as a backup target, this rule should be applied.
 
 ## Backup Sources
+The role [ansible-role-backup-source](https://github.com/andreasbehnke/ansible-role-backup-source) must be applied to every host participating as backup source.
+
 Backup source can be any server in your network. This server should be in the ansible inventory group named by variable ```backup_source_group_name``` which defaults to ```backup_source```. Each backup source must provide the following variables:
 
 ```
