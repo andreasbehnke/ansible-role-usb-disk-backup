@@ -1,5 +1,5 @@
 ---
 
-  - include: 'rsync.yml'
-  - include: 'backup-script.yml'
-  - include: 'backup-service.yml'
+  - include_tasks: 'rsync.yml'
+  - include_tasks: 'backup-script.yml'
+  - include_tasks: 'backup-service.yml'
