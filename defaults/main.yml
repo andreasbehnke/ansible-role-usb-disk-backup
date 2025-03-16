@@ -1,4 +1,4 @@
 ---
-  backup_slave_group_name: 'backup_slave'
-  backup_slave_sources_name: 'backup_sources'
+  backup_source_group_name: 'backup_source'
+  backup_source_directory_names: 'backup_sources'
   backup_headless: true

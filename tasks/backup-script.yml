@@ -10,7 +10,7 @@
     file: 
       path: '/opt/backup' 
       state: 'directory'
-  - name: write backup script for all slave hosts
+  - name: write backup script for all source hosts
     become: yes
     template: 
       src: 'backup.sh.j2' 

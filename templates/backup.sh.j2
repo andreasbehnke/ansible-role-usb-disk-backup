@@ -3,11 +3,11 @@ errors=
 {% if not backup_headless %}
 notify-send "Starting backup"
 {% endif %}
-{% for host in groups[backup_slave_group_name] %}
-{% for source in hostvars[host][backup_slave_sources_name] %}
+{% for host in groups[backup_source_group_name] %}
+{% for source in hostvars[host][backup_source_directory_names] %}
 echo '===============================================' >> /var/log/backup/{{ host }}.log
 date -Is  >> /var/log/backup/{{ host }}.log
-rsync --stats {{ backup_master_rsync_opts | default(source.rsync_opts) }} {{ source.user }}@{{ hostvars[host]['ansible_host'] }}:{{ source.path }} {{ backup_device.path }}/{{ host }} &>> /var/log/backup/{{ host }}.log
+rsync --stats {{ backup_controller_rsync_opts | default(source.rsync_opts) }} {{ source.user }}@{{ hostvars[host]['ansible_host'] }}:{{ source.path }} {{ backup_device.path }}/{{ host }} &>> /var/log/backup/{{ host }}.log
 if [ ! $? -eq 0 ]
 then
     error="${error}{{ host }} "
